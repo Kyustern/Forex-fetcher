@@ -11,26 +11,22 @@ const App = () => {
 
     const [firstCurrency, setFirstCurrency] = useState('')
     const [secondCurrency, setSecondCurrency] = useState('')
-    const [resData, setResData] = useState({})
+    const [resData, setResData] = useState(null)
 
     const request = async (selectedCurrency, selectedCurrency2) => {
+
+        //e.preventDefault()
+
         setFirstCurrency(selectedCurrency)
         setSecondCurrency(selectedCurrency2)
-        console.log(selectedCurrency, selectedCurrency2);
-        
+        //console.log(selectedCurrency, selectedCurrency2);
 
-        setResData(
-            {
-                firstCurrency,
-                secondCurrency
-            }
-        )
+        const { data } = await axios.get(`https://api.exchangeratesapi.io/latest?base=${selectedCurrency}&symbols`)
+
+        console.log(data);
         
-        //await axios.get(`https://api.exchangeratesapi.io/latest?base='JPY'`)
-        //await axios.get(`https://api.exchangeratesapi.io/latest?base=${firstCurrency}`)
+        setResData(data)
     }
-
-    console.log(resData);
 
     return (
         <div className="ui container">

@@ -27,15 +27,15 @@ const CurrencyInput = (props) => {
     const [selectedCurrency2, setSelectedCurrency2] = useState('')
 
     useEffect(() => {
-        console.log(selectedCurrency)
-        console.log(selectedCurrency2)
+        //console.log(selectedCurrency)
+        //console.log(selectedCurrency2)
     }, [selectedCurrency, selectedCurrency2])
 
     return (
 
         <>
             <Wrapper>
-                <select onChange={e => console.log(e.target.value)} className="ui button">
+                <select onChange={e => setSelectedCurrency(e.target.value)} className="ui button">
                     <option>Choose a currency</option>
                     {Object.values(Currencies).map(currency => <option key={currency.code} value={currency.code}>{currency.name}</option>)}
                 </select>
@@ -48,7 +48,7 @@ const CurrencyInput = (props) => {
 
             <button onClick={() => props.lol(selectedCurrency, selectedCurrency2)}>
                 AAAAAAAAAAAH
-            </button>
+                </button>
 
         </>
     );
