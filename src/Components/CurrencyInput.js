@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
-import Currencies from '../currencyData.js'
+import Currencies from '../currencyDataForexOpen.js'
 
-console.log(Object.values(Currencies));
+//console.log(Object.values(Currencies));
 
 const Wrapper = styled.div`
     width: 100%;
@@ -12,47 +12,46 @@ const Wrapper = styled.div`
     justify-content: space-evenly;
     align-items: center;
 `
-const Button = styled.button`
-    display: flex;
-    align-items: center;
-    width: 100%;
-    border-radius: 10px;
+// const SubmitButton = styled.button`
+//     display: flex;
+//     align-items: center;
+//     width: 100%;
+//     border-radius: 10px;
 
-`
+// `
 
-const Dropdown = () => {
+const CurrencyInput = (props) => {
+
     const [selectedCurrency, setSelectedCurrency] = useState('')
 
-    const [selectedCurrencyTheReturn, setSelectedCurrencyTheReturn] = useState('')
+    const [selectedCurrency2, setSelectedCurrency2] = useState('')
 
     useEffect(() => {
         console.log(selectedCurrency)
-        console.log(selectedCurrencyTheReturn)
-    }, [selectedCurrency, selectedCurrencyTheReturn])
-
-    const passTheDataMan = () => {
-        console.log("passing data to parent...");
-
-    }
+        console.log(selectedCurrency2)
+    }, [selectedCurrency, selectedCurrency2])
 
     return (
 
         <>
             <Wrapper>
-                <select onChange={e => setSelectedCurrency(e.target.value)} className="ui button">
+                <select onChange={e => console.log(e.target.value)} className="ui button">
                     <option>Choose a currency</option>
-                    {Object.values(Currencies).map(currency => <option key={currency.name} value={currency.name}>{currency.name}</option>)}
+                    {Object.values(Currencies).map(currency => <option key={currency.code} value={currency.code}>{currency.name}</option>)}
                 </select>
                 <div>To :</div>
-                <select onChange={e => setSelectedCurrencyTheReturn(e.target.value)} className="ui button">
+                <select onChange={e => setSelectedCurrency2(e.target.value)} className="ui button">
                     <option value='All'>All</option>
-                    {Object.values(Currencies).map(currency => <option key={currency.name} value={currency.name}>{currency.name}</option>)}
+                    {Object.values(Currencies).map(currency => <option key={currency.code} value={currency.code}>{currency.name}</option>)}
                 </select>
             </Wrapper>
 
-            <Button>Suce</Button>
+            <button onClick={() => props.lol(selectedCurrency, selectedCurrency2)}>
+                AAAAAAAAAAAH
+            </button>
+
         </>
     );
 }
 
-export default Dropdown
+export default CurrencyInput

@@ -26,51 +26,51 @@ const Currencies = {
         "code": "EUR",
         "name_plural": "euros"
     },
-    "AED": {
-        "symbol": "AED",
-        "name": "United Arab Emirates Dirham",
-        "symbol_native": "د.إ.‏",
-        "decimal_digits": 2,
-        "rounding": 0,
-        "code": "AED",
-        "name_plural": "UAE dirhams"
-    },
-    "AFN": {
-        "symbol": "Af",
-        "name": "Afghan Afghani",
-        "symbol_native": "؋",
-        "decimal_digits": 0,
-        "rounding": 0,
-        "code": "AFN",
-        "name_plural": "Afghan Afghanis"
-    },
-    "ALL": {
-        "symbol": "ALL",
-        "name": "Albanian Lek",
-        "symbol_native": "Lek",
-        "decimal_digits": 0,
-        "rounding": 0,
-        "code": "ALL",
-        "name_plural": "Albanian lekë"
-    },
-    "AMD": {
-        "symbol": "AMD",
-        "name": "Armenian Dram",
-        "symbol_native": "դր.",
-        "decimal_digits": 0,
-        "rounding": 0,
-        "code": "AMD",
-        "name_plural": "Armenian drams"
-    },
-    "ARS": {
-        "symbol": "AR$",
-        "name": "Argentine Peso",
-        "symbol_native": "$",
-        "decimal_digits": 2,
-        "rounding": 0,
-        "code": "ARS",
-        "name_plural": "Argentine pesos"
-    },
+    // "AED": {
+    //     "symbol": "AED",
+    //     "name": "United Arab Emirates Dirham",
+    //     "symbol_native": "د.إ.‏",
+    //     "decimal_digits": 2,
+    //     "rounding": 0,
+    //     "code": "AED",
+    //     "name_plural": "UAE dirhams"
+    // },
+    // "AFN": {
+    //     "symbol": "Af",
+    //     "name": "Afghan Afghani",
+    //     "symbol_native": "؋",
+    //     "decimal_digits": 0,
+    //     "rounding": 0,
+    //     "code": "AFN",
+    //     "name_plural": "Afghan Afghanis"
+    // },
+    // "ALL": {
+    //     "symbol": "ALL",
+    //     "name": "Albanian Lek",
+    //     "symbol_native": "Lek",
+    //     "decimal_digits": 0,
+    //     "rounding": 0,
+    //     "code": "ALL",
+    //     "name_plural": "Albanian lekë"
+    // },
+    // "AMD": {
+    //     "symbol": "AMD",
+    //     "name": "Armenian Dram",
+    //     "symbol_native": "դր.",
+    //     "decimal_digits": 0,
+    //     "rounding": 0,
+    //     "code": "AMD",
+    //     "name_plural": "Armenian drams"
+    // },
+    // "ARS": {
+    //     "symbol": "AR$",
+    //     "name": "Argentine Peso",
+    //     "symbol_native": "$",
+    //     "decimal_digits": 2,
+    //     "rounding": 0,
+    //     "code": "ARS",
+    //     "name_plural": "Argentine pesos"
+    // },
     "AUD": {
         "symbol": "AU$",
         "name": "Australian Dollar",
@@ -1062,4 +1062,4 @@ const Currencies = {
         "name_plural": "Zambian kwachas"
     }
 }
-export default Currencies
+//export default Currencies

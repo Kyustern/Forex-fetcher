@@ -1,5 +1,5 @@
 import React from 'react'
-
+import styled from 'styled-components'
 
 //ERL Stands for Exchange Rate List, dumbass
 class ERL extends React.Component {
