@@ -21,7 +21,7 @@ const App = () => {
         setSecondCurrency(selectedCurrency2)
         //console.log(selectedCurrency, selectedCurrency2);
 
-        const { data } = await axios.get(`https://api.exchangeratesapi.io/latest?base=${selectedCurrency}&symbols`)
+        const { data } = await axios.get(`https://api.exchangeratesapi.io/latest?base=${selectedCurrency}&symbols=${selectedCurrency2}`)
 
         console.log(data);
         
