@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import Currencies from '../currencyDataForexOpen.js'
@@ -12,43 +12,48 @@ const Wrapper = styled.div`
     justify-content: space-evenly;
     align-items: center;
 `
-// const SubmitButton = styled.button`
-//     display: flex;
-//     align-items: center;
-//     width: 100%;
-//     border-radius: 10px;
+const SubmitButton = styled.button`
+    margin-top: 10px;
+    height: 25px;
 
-// `
+    display: flex;
+    align-items: center;
+    width: 25%;
+    border-radius: 3px;
+    justify-content: space-evenly;
+    border: 2px solid grey;
+    border-radius: 10px;
 
-const CurrencyInput = (props) => {
+    &:hover {
+        background-color:grey;
+        cursor: pointer
+    }
 
-    const [selectedCurrency, setSelectedCurrency] = useState('')
+`
 
-    const [selectedCurrency2, setSelectedCurrency2] = useState('')
+const CurrencyInput = ({ onCurrencyInput }) => {
 
-    useEffect(() => {
-        //console.log(selectedCurrency)
-        //console.log(selectedCurrency2)
-    }, [selectedCurrency, selectedCurrency2])
+    const [selectedCurrencies, setSelectedCurrencies] = useState({ first: 'USD', second: 'USD' })
 
     return (
 
         <>
             <Wrapper>
-                <select onChange={e => setSelectedCurrency(e.target.value)} className="ui button">
-                    <option>Choose a currency</option>
+                <select onChange={e => setSelectedCurrencies({ ...selectedCurrencies, first: e.target.value })} valiue={selectedCurrencies.first} className="ui button">
+                    
                     {Object.values(Currencies).map(currency => <option key={currency.code} value={currency.code}>{currency.name}</option>)}
                 </select>
                 <div>To :</div>
-                <select onChange={e => setSelectedCurrency2(e.target.value)} className="ui button">
-                    <option value='All'>All</option>
+                <select onChange={e => setSelectedCurrencies({ ...selectedCurrencies, second: e.target.value })} value={selectedCurrencies.second} className="ui button">
                     {Object.values(Currencies).map(currency => <option key={currency.code} value={currency.code}>{currency.name}</option>)}
                 </select>
             </Wrapper>
 
-            <button onClick={() => props.lol(selectedCurrency, selectedCurrency2)}>
-                AAAAAAAAAAAH
-                </button>
+            <Wrapper>
+                <SubmitButton onClick={() => onCurrencyInput(selectedCurrencies)}>
+                    Get Exchange Rate
+                </SubmitButton>
+            </Wrapper>
 
         </>
     );

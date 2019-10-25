@@ -1,0 +1,4 @@
+#app {
+    /* background-image: url('./dark-honeycomb.png'); */
+    background-image: url('/assets/dark-honeycomb.png') !important;
+}
