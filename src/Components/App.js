@@ -4,12 +4,14 @@ import axios from 'axios'
 import CurrencyInput from './CurrencyInput'
 import ResponseHeader from './ResponseHeader'
 import Footer from './Footer'
+import Chart from './Chart'
 
 const App = () => {
     // const [firstCurrency, setFirstCurrency] = useState('USD')
     // const [secondCurrency, setSecondCurrency] = useState('USD')
     const [stateCurrencies, setStateCurrencies] = useState({ stateFirst: 'USD', stateSecond: 'USD' })
     const [currentRate, setCurrentRate] = useState(0)
+    const [chartData, setChartData] = useState({})
 
     const request = async currencies => {
         const { first, second } = currencies
@@ -31,8 +33,9 @@ const App = () => {
         const { first, second } = stateCurrencies
         const url = `https://api.exchangeratesapi.io/history?base=${first}&start_at=2018-01-01&end_at=2018-09-01&symbols=${second}`
         const { data } = await axios.get(url)
-        console.log(data)
-        console.log(timePeriod)
+        // console.log(data)
+        // console.log(timePeriod)
+        setChartData(data)
     }
 
     return (
@@ -53,6 +56,7 @@ const App = () => {
                         <span>Enter currencies to receive exchange rates</span>
                 }
             </div>
+            <Chart a={chartData}></Chart>
             <Footer></Footer>
         </div>
     );
