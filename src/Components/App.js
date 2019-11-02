@@ -4,7 +4,7 @@ import axios from 'axios'
 import CurrencyInput from './CurrencyInput'
 import ResponseHeader from './ResponseHeader'
 import Footer from './Footer'
-import Chart from './Chart'
+import ChartComponent from './Chart'
 
 const App = () => {
     // const [firstCurrency, setFirstCurrency] = useState('USD')
@@ -56,7 +56,7 @@ const App = () => {
                         <span>Enter currencies to receive exchange rates</span>
                 }
             </div>
-            <Chart a={chartData}></Chart>
+            <ChartComponent a={chartData}></ChartComponent>
             <Footer></Footer>
         </div>
     );
