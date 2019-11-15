@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import moment from 'moment'
 
 const GraphEnable = styled.button`
     margin-top: 10px;
@@ -50,6 +51,34 @@ const ResponseHeader = ({ firstCurrency, secondCurrency, rate, onTimePeriodSelec
 
     const [displayStuff, setDisplayStuff] = useState(false)
 
+    const getDate = (innerHTML) => {
+
+        const now = moment()
+        let before = moment()
+
+        switch (innerHTML) {
+            case '1 Week':
+                before.subtract(7, 'days')
+                break
+            case '2 Weeks':
+                before.subtract(14, 'days')
+                break
+            case '1 Month':
+                before.subtract(1, 'months')
+                break
+            case '2 Months':
+                before.subtract(2, 'months')
+                break
+        }
+        
+        onTimePeriodSelect([now.format('YYYY-MM-DD'), before.format('YYYY-MM-DD')])
+
+        //data should be an array of two elements : [theComputedDate, today'sDate]
+
+        //will send the date we are looking for
+        //onTimePeriodSelect(aaa)
+    }
+
     return (
         <div>
             <span>Exchange rate of {firstCurrency} to {secondCurrency} is : {rate}</span>
@@ -59,19 +88,20 @@ const ResponseHeader = ({ firstCurrency, secondCurrency, rate, onTimePeriodSelec
             {
                 displayStuff ?
                     <ButtonRack>
-                        <DateSelector onClick={(e) => onTimePeriodSelect(e.target.innerHTML)}>
+                        <DateSelector onClick={(e) => { getDate(e.target.innerHTML) }}>
                             1 Week
+                        </DateSelector >
+                        <DateSelector onClick={(e) => { getDate(e.target.innerHTML) }}>
+                            2 Weeks
                         </DateSelector>
-                        <DateSelector>
-                            2 Week
-                        </DateSelector>
-                        <DateSelector>
+                        <DateSelector onClick={(e) => { getDate(e.target.innerHTML) }}>
                             1 Month
                         </DateSelector>
-                        <DateSelector>
-                            2 Month
+                        <DateSelector onClick={(e) => { getDate(e.target.innerHTML) }}>
+                            2 Months
                         </DateSelector>
                     </ButtonRack>
+
                     : null
             }
         </div>
