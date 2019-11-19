@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import Moment from 'moment'
+import _ from 'lodash'
 
 import CurrencyInput from './CurrencyInput'
 import ResponseHeader from './ResponseHeader'
@@ -30,16 +32,42 @@ const App = () => {
     }
 
     const displayGraph = async timePeriod => {
+        //Get the data
         const { first, second } = stateCurrencies
-        const url = `https://api.exchangeratesapi.io/history?base=${first}&start_at=2018-01-01&end_at=2018-09-01&symbols=${second}`
+        const url = `https://api.exchangeratesapi.io/history?base=${first}&start_at=${timePeriod[1]}&end_at=${timePeriod[0]}&symbols=${second}`
         const { data } = await axios.get(url)
-        // console.log(data)
-        // console.log(timePeriod)
-        setChartData(data)
+        
+        //Get all dates and put them into an array
+        let unsortedDates = []
+        for (let key in data.rates) {
+            unsortedDates.push(key)
+            //console.log(`${key} : ${data.rates[key]}`)
+        }
+
+        //Sort the array and return it into "sortedDates"
+        const sortedDates = unsortedDates.sort((a, b) => new Moment(a).format('YYYYMMDD') - new Moment(b).format('YYYYMMDD'))
+        console.log(sortedDates)
+        console.log(sortedDates.length)
+
+      
+        //Store the dates and their values into two distinct arrays :
+        let labels = []
+        let values = []
+
+        for (let i = 0; i < sortedDates.length; i++) {
+            labels.push(sortedDates[i])
+
+            values.push(Object.values(data.rates[sortedDates[i]])[0])
+        }
+
+        console.log(labels, values)
+        //console.log(Object.values(data.rates[sortedDates[0]])[0])
+
+        setChartData({labels, values})
     }
 
     return (
-        <div style={{backgroundImage: 'url(./assets/dark-honeycomb.png)'}}>
+        <div style={{ backgroundImage: 'url(./assets/dark-honeycomb.png)' }}>
             <div className="ui container">
                 <h1 style={{ textAlign: "center" }}>Get exchange rates here :</h1>
                 <CurrencyInput onCurrencyInput={currencies => request(currencies)} />
@@ -55,8 +83,8 @@ const App = () => {
                         :
                         <span>Enter currencies to receive exchange rates</span>
                 }
+                <ChartComponent a={chartData}></ChartComponent>
             </div>
-            <ChartComponent a={chartData}></ChartComponent>
             <Footer></Footer>
         </div>
     );
