@@ -7,11 +7,14 @@ const ChartComponent = ({ a }) => {
 
         <Line
             data={{
-                labels: a.labels,
+                //labels: a.labels,
                 datasets: [{
-                    data : a.values,
-                    label: 'eh nik ta mere'
-                }]
+                    data : a.values
+                }],
+                option: {
+                    color: 'red'
+                }
+
             }}
         >
 

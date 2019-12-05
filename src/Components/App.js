@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import Moment from 'moment'
-import _ from 'lodash'
 
 import CurrencyInput from './CurrencyInput'
 import ResponseHeader from './ResponseHeader'
